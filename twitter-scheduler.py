@@ -35,13 +35,16 @@ def job():
 
 schedule.every(1).minutes.do(job)
 #schedule.every().hour.do(job)
-schedule.every().day.at("1:00").do(job)
-schedule.every().day.at("5:00").do(job)
+schedule.every().day.at("0:00").do(job)
+schedule.every().day.at("2:00").do(job)
+schedule.every().day.at("4:00").do(job)
+schedule.every().day.at("7:00").do(job)
+schedule.every().day.at("11:00").do(job)
 schedule.every().day.at("14:00").do(job)
-schedule.every().day.at("17:00").do(job)
-schedule.every().day.at("20:00").do(job)
+schedule.every().day.at("16:00").do(job)
+schedule.every().day.at("18:00").do(job)
 schedule.every().day.at("22:00").do(job)
-
+schedule.every().day.at("23:00").do(job)
 while 1:
     schedule.run_pending()
     time.sleep(1)

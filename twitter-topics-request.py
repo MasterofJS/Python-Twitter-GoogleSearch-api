@@ -24,9 +24,22 @@ expires_in = response.json()['expires_in']
 access_token = 'Bearer ' + response.json()['access_token']
 #print(access_token)
 
-header = {'Content-Type': 'application/json','Accept-Encoding':'gzip','ClientId':client_id,'X-Requested-With':'XMLHttpRequest','Accept':'*/*','Authorization':access_token ,'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
+header = {'Content-Type': 'application/json','Accept':'*/*','Authorization':access_token ,'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
 token_type = response.json()['token_type']
-pdata = {"Name":sys.argv[1],"PictureUrl":sys.argv[2]}
-r = requests.post(url, params = pdata,headers=header)
-print(r.headers)
-print(r.raise_for_status())
+pdata = {"name":sys.argv[1],"pictureUrl":sys.argv[2],"woeid":'23424977'}
+#r = requests.post(url, data = json.dumps(pdata),headers=header)
+r = requests.get(url,params = {"limit":"500"} ,headers=header)
+flag = 1
+#print(r.headers)
+#print(r.raise_for_status())
+#print(r.json())
+#print(r.status_code)
+for item in r.json():
+    print(len(r.json()))
+    if item['name'] == sys.argv[1]:
+        if item['pictureUrl'] == sys.argv[2]:
+            flag = 0
+            break
+if flag == 1:
+   r = requests.post(url, data = json.dumps(pdata),headers=header)
+   print(r.json())         
