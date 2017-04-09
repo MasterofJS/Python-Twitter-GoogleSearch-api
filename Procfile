@@ -1,1 +1,1 @@
-web: python3 twitter-scheduler.py
+worker: python3 twitter-scheduler.py --log-file -
