@@ -3,4 +3,3 @@ numpy
 tweepy
 requests==1.1.0
 python-firebase
-encodings
