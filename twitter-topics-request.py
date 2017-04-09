@@ -35,7 +35,6 @@ flag = 1
 #print(r.json())
 #print(r.status_code)
 for item in r.json():
-    print(len(r.json()))
     if item['name'] == sys.argv[1]:
         if item['pictureUrl'] == sys.argv[2]:
             flag = 0
